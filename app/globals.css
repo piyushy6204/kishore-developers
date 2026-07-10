@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cormorant: "Cormorant Garamond", Georgia, serif;
+  --font-inter: "Inter", "Helvetica Neue", sans-serif;
+
+  --color-pr-white: #FAFAF8;
+  --color-pr-off-white: #F3F0EB;
+  --color-pr-gold: #B8976A;
+  --color-pr-gold-light: #D4B896;
+  --color-pr-gold-dark: #9A7A52;
+  --color-pr-beige: #E8DFD0;
+  --color-pr-taupe: #9E8E7E;
+  --color-pr-grey: #C8BDB2;
+  --color-pr-walnut: #6B4F3A;
+  --color-pr-charcoal: #1C1C1A;
+  --color-pr-muted: #6B6B65;
+  --color-pr-muted-light: #9B9B94;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #FAFAF8;
+  color: #1C1C1A;
+  font-family: var(--font-inter), "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: #B8976A;
+  color: #FAFAF8;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #F3F0EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8976A;
+  border-radius: 2px;
+}
+
+/* Utility classes */
+.section-padding {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.container-pr {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 768px) {
+  .container-pr {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* Image hover reveal */
+.img-reveal {
+  overflow: hidden;
+}
+.img-reveal img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-reveal:hover img {
+  transform: scale(1.05);
+}
+
+/* Gold line divider */
+.gold-divider {
+  display: block;
+  width: 48px;
+  height: 1px;
+  background-color: #B8976A;
+  margin-bottom: 1.5rem;
+}
+
+/* Masonry gallery */
+.masonry-gallery {
+  columns: 3;
+  column-gap: 1rem;
+}
+@media (max-width: 900px) {
+  .masonry-gallery {
+    columns: 2;
+  }
+}
+@media (max-width: 600px) {
+  .masonry-gallery {
+    columns: 1;
+  }
+}
+.masonry-gallery .masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* Number counter pulse */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #B8976A;
+  z-index: 9999;
+  transition: width 0.1s linear;
+}

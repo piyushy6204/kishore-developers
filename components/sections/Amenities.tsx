@@ -38,7 +38,7 @@ export default function Amenities() {
             alt="Platinum Royale Amenities — Sky Deck and Lifestyle"
             fill
             className="object-cover"
-            sizes="100vw"
+            sizes="95vw"
           />
           <div className="absolute inset-0 flex items-end p-8">
             <div>

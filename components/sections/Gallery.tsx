@@ -2,15 +2,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Button from "@/components/ui/Button";
-import LeadModal from "@/components/ui/LeadModal";
 import { GALLERY_CATEGORIES, GALLERY_IMAGES } from "@/lib/content";
 import { X } from "lucide-react";
 
 export default function Gallery() {
   const [active, setActive] = useState("All");
   const [lightbox, setLightbox] = useState<string | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const filtered =
     active === "All" ? GALLERY_IMAGES : GALLERY_IMAGES.filter((img) => img.category === active);
@@ -44,23 +41,21 @@ export default function Gallery() {
             ))}
           </div>
 
-          {/* Masonry gallery */}
-          <div className="masonry-gallery">
+          {/* Horizontal Swipe Gallery */}
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
             {filtered.map((img, i) => (
               <div
                 key={`${img.src}-${i}`}
-                className="masonry-item img-reveal cursor-pointer"
+                className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center cursor-pointer group"
                 onClick={() => setLightbox(img.src)}
               >
-                <div className="relative w-full rounded-2xl overflow-hidden shadow-card border border-pr-beige-40"
-                  style={{ height: i % 3 === 0 ? 280 : i % 3 === 1 ? 200 : 240 }}
-                >
+                <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-card border border-pr-beige-40">
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover transition-transform duration-700 hover:scale-105"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    className={`transition-transform duration-700 group-hover:scale-105 ${img.src.includes('enterance_lobby') || img.src.includes('lifestyle_space') || img.src.includes('fitness_area') || img.src.includes('night_life') ? 'object-contain' : 'object-cover'}`}
+                    sizes="(max-width: 768px) 85vw, 600px"
                   />
                 </div>
               </div>
@@ -69,9 +64,14 @@ export default function Gallery() {
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <Button id="gallery-brochure" variant="ghost" size="lg" onClick={() => setModalOpen(true)}>
+            <a
+              id="gallery-brochure"
+              href="/brochure/platinum-royale-brochure.pdf"
+              download="Platinum-Royale-Brochure.pdf"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+            >
               Download Brochure
-            </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -95,13 +95,11 @@ export default function Gallery() {
               alt="Gallery preview"
               fill
               className="object-contain"
-              sizes="100vw"
+              sizes="(max-width: 896px) 100vw, 896px"
             />
           </div>
         </div>
       )}
-
-      <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} trigger="brochure" />
     </>
   );
 }

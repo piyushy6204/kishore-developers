@@ -32,46 +32,31 @@ export default function Specifications() {
           </h2>
         </div>
 
-        {/* Accordion */}
-        <div className="max-w-2xl mx-auto space-y-2" ref={ref}>
-          {SPECIFICATIONS.map((spec, i) => {
-            const Icon = SPEC_ICONS[spec.title] || Layers;
-            const isOpen = open === i;
-            return (
-              <div
-                key={spec.title}
-                className={`bg-white rounded-2xl border transition-all duration-[400ms] overflow-hidden ${isOpen ? "border-pr-gold shadow-card" : "border-pr-beige-60 shadow-card"} ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-                style={{ transitionDelay: `${i * 60}ms` }}
-              >
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between px-6 py-5 cursor-pointer group"
-                  aria-expanded={isOpen}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 ${isOpen ? "bg-pr-gold-10" : "bg-pr-off-white group-hover:bg-pr-beige"}`}>
-                      <Icon size={15} strokeWidth={1.5} className={`transition-colors duration-300 ${isOpen ? "text-pr-gold" : "text-pr-taupe"}`} />
-                    </div>
-                    <span className="font-sans text-sm font-medium text-pr-charcoal text-left">{spec.title}</span>
-                  </div>
-                  <ChevronDown
-                    size={16}
-                    strokeWidth={1.5}
-                    className={`text-pr-muted transition-transform duration-300 flex-shrink-0 ml-2 ${isOpen ? "rotate-180 text-pr-gold" : ""}`}
-                  />
-                </button>
+        {/* Infinite Marquee Cards */}
+        <div className="relative w-full overflow-hidden mt-10 flex group" ref={ref}>
+          {/* Fading edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-r from-pr-off-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-32 bg-gradient-to-l from-pr-off-white to-transparent z-10 pointer-events-none" />
 
-                {/* Expandable content */}
+          <div
+            className={`flex gap-6 min-w-max py-4 px-3 transition-opacity duration-1000 ${inView ? "animate-marquee opacity-100" : "opacity-0"}`}
+          >
+            {[...SPECIFICATIONS, ...SPECIFICATIONS].map((spec, i) => {
+              const Icon = SPEC_ICONS[spec.title] || Layers;
+              return (
                 <div
-                  className={`overflow-hidden transition-all duration-[400ms] ${isOpen ? "max-h-24 opacity-100" : "max-h-0 opacity-0"}`}
+                  key={`${spec.title}-${i}`}
+                  className="w-[280px] md:w-[320px] flex-shrink-0 bg-white rounded-2xl p-6 shadow-card border border-pr-beige-60 transition-colors duration-300 hover:border-pr-gold"
                 >
-                  <div className="px-6 pb-5 pl-[4.25rem]">
-                    <p className="font-sans text-sm text-pr-muted leading-relaxed">{spec.detail}</p>
+                  <div className="w-12 h-12 rounded-full bg-pr-gold-10 flex items-center justify-center mb-4 transition-colors duration-300 hover:bg-pr-gold-20">
+                    <Icon size={20} strokeWidth={1.5} className="text-pr-gold" />
                   </div>
+                  <h3 className="font-serif text-lg text-pr-charcoal mb-2">{spec.title}</h3>
+                  <p className="font-sans text-sm text-pr-muted leading-relaxed">{spec.detail}</p>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

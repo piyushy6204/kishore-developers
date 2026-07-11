@@ -67,11 +67,11 @@ body {
 
 /* ─── Layout Utilities ─────────────────────────── */
 .section-padding {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 @media (max-width: 768px) {
-  .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
+  .section-padding { padding-top: 2.5rem; padding-bottom: 2.5rem; }
 }
 
 .container-pr {
@@ -216,3 +216,25 @@ body {
 .border-white-10 { border-color: rgba(255,255,255,0.10); }
 .border-white-50 { border-color: rgba(255,255,255,0.50); }
 
+/* ─── Custom Animations & Scrollbars ─────────────────────────── */
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

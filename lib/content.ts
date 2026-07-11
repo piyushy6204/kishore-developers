@@ -12,11 +12,11 @@ export const SITE = {
   development: "Exclusive Single Tower",
   possessionDate: "Dec 2026*",
   carpetArea: "650 – 850 sq.ft.",
-  whatsapp: "919876543210", // replace with real number
-  phone: "+91 98765 43210", // replace with real number
-  email: "sales@kishordevelopers.com", // replace
+  whatsapp: "917066457000", // replace with real number
+  phone: "+91 70664 57000", // replace with real number
+  email: "sales@platinumtowers.in", // replace
   website: "www.kishordevelopers.com",
-  siteAddress: "Platinum Royale, Wakad, Pune – 411057",
+  siteAddress: "Sr. No. 175 1/1 B, Platinum Tower, Datta Mandir Road, Wakad, Pune - 411057, Maharashtra, India.",
   officeAddress: "Kishor Developers, Corp Office, Pune",
   mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.0!2d73.76!3d18.60!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb!2sWakad!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin",
 };
@@ -60,23 +60,21 @@ export const AMENITIES = [
 ];
 
 export const FLOOR_PLANS = [
-  { type: "Premium 2 BHK", label: "Type 1", carpet: "650 sq.ft.", image: "/images/fp-1.jpg" },
-  { type: "Premium 2 BHK", label: "Type 2", carpet: "700 sq.ft.", image: "/images/fp-2.jpg" },
-  { type: "Premium 2 BHK", label: "Type 3", carpet: "750 sq.ft.", image: "/images/fp-3.jpg" },
-  { type: "Premium 2 BHK", label: "Type 4", carpet: "850 sq.ft.", image: "/images/fp-4.jpg" },
+  { type: "Premium 2 BHK", label: "1st-5th & 7th-11th Floor", carpet: "632 - 654 sq.ft.", image: "/floorplan1.jpg" },
+  { type: "Premium 2 BHK", label: "Floor Plan 2", carpet: "632 - 654 sq.ft.", image: "/floorplan2.jpg" },
+  { type: "Premium 2 BHK", label: "6th & 12th Floor", carpet: "523 - 637 sq.ft.", image: "/floorplan3.jpg" },
+  { type: "Premium 2 BHK", label: "3D Sections", carpet: "2 BHK Flats", image: "/floorplan4.jpg" },
 ];
 
 export const GALLERY_CATEGORIES = ["All", "Exterior", "Entrance Lobby", "Lifestyle Spaces", "Sky Deck", "Fitness Area", "Night Elevation"];
 
 export const GALLERY_IMAGES = [
-  { category: "Exterior", src: "/images/gallery-ext-1.jpg", alt: "Platinum Royale Exterior View" },
-  { category: "Exterior", src: "/images/gallery-ext-2.jpg", alt: "Tower Elevation" },
-  { category: "Entrance Lobby", src: "/images/gallery-lobby-1.jpg", alt: "Grand Entrance Lobby" },
-  { category: "Lifestyle Spaces", src: "/images/gallery-life-1.jpg", alt: "Living Room" },
-  { category: "Sky Deck", src: "/images/gallery-deck-1.jpg", alt: "Sky Deck Lounge" },
-  { category: "Fitness Area", src: "/images/gallery-fit-1.jpg", alt: "Rooftop Fitness Area" },
-  { category: "Night Elevation", src: "/images/gallery-night-1.jpg", alt: "Night Elevation" },
-  { category: "Night Elevation", src: "/images/gallery-night-2.jpg", alt: "Illuminated Facade" },
+  { category: "Exterior", src: "/hero_image.png", alt: "Platinum Royale Exterior View" },
+  { category: "Entrance Lobby", src: "/enterance_lobby.png", alt: "Grand Entrance Lobby" },
+  { category: "Lifestyle Spaces", src: "/lifestyle_space.png", alt: "Living Room" },
+  { category: "Sky Deck", src: "/PLATINUM ROYALE BROCHURE_pages-to-jpg-0006.jpg", alt: "Sky Deck Lounge" },
+  { category: "Fitness Area", src: "/fitness_area.png", alt: "Rooftop Fitness Area" },
+  { category: "Night Elevation", src: "/night_life.png", alt: "Platinum Royale Night Elevation" },
 ];
 
 export const LOCATION_ADVANTAGES = [

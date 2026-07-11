@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`} suppressHydrationWarning>
-      <body className="bg-pr-white text-pr-charcoal antialiased" suppressHydrationWarning>
+      <body className="bg-pr-white text-pr-charcoal antialiased lining-nums proportional-nums" suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -1,16 +1,13 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
-import Button from "@/components/ui/Button";
-import LeadModal from "@/components/ui/LeadModal";
 import { HIGHLIGHTS } from "@/lib/content";
 import { useInView } from "@/lib/useInView";
 
 export default function ProjectOverview() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { threshold: 0.15 });
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
@@ -23,7 +20,7 @@ export default function ProjectOverview() {
             >
               <div className="relative h-[500px] md:h-[620px] rounded-3xl overflow-hidden shadow-luxury-lg img-reveal">
                 <Image
-                  src="/images/overview-render.jpg"
+                  src="/night_life.png"
                   alt="Platinum Royale Project Overview — Wakad Pune"
                   fill
                   className="object-cover"
@@ -65,15 +62,18 @@ export default function ProjectOverview() {
                 ))}
               </div>
 
-              <Button id="overview-brochure" variant="ghost" size="md" onClick={() => setModalOpen(true)}>
+              <a
+                id="overview-brochure"
+                href="/brochure/platinum-royale-brochure.pdf"
+                download="Platinum-Royale-Brochure.pdf"
+                className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-7 py-3.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+              >
                 Download Brochure
-              </Button>
+              </a>
             </div>
           </div>
         </div>
       </section>
-
-      <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} trigger="brochure" />
     </>
   );
 }

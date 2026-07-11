@@ -6,16 +6,9 @@ import { NAV_LINKS } from "@/lib/content";
 import { Menu, X } from "lucide-react";
 
 export default function StickyHeader() {
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Scroll spy
   useEffect(() => {
@@ -43,13 +36,8 @@ export default function StickyHeader() {
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${
-          scrolled
-            ? "bg-pr-white/95 backdrop-blur-md shadow-luxury-sm py-3"
-            : "bg-transparent py-5"
-        }`}
-      >
+      {/* Always-white, always-visible header */}
+      <header className="fixed top-0 left-0 right-0 z-[100] bg-white shadow-luxury-sm py-4">
         <div className="container-pr flex items-center justify-between">
           {/* Logo */}
           <div className="flex flex-col leading-none">
@@ -101,7 +89,7 @@ export default function StickyHeader() {
 
         {/* Mobile Drawer */}
         {menuOpen && (
-          <div className="lg:hidden bg-pr-white border-t border-pr-beige py-6 px-6 space-y-4 shadow-luxury">
+          <div className="lg:hidden bg-white border-t border-pr-beige py-6 px-6 space-y-4 shadow-luxury">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}

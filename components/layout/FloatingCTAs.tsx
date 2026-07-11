@@ -16,7 +16,7 @@ export default function FloatingCTAs() {
         rel="noopener noreferrer"
         id="whatsapp-fab"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-24 right-5 z-[150] w-13 h-13 rounded-full bg-[#25D366] flex items-center justify-center shadow-luxury transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
+        className="fixed bottom-[72px] md:bottom-8 right-4 md:right-6 z-[150] w-13 h-13 rounded-full bg-[#25D366] flex items-center justify-center shadow-luxury transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
         style={{ width: 52, height: 52 }}
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="white">

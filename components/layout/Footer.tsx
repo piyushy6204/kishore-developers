@@ -7,8 +7,8 @@ export default function Footer() {
       {/* Gold divider */}
       <div className="h-px w-full bg-pr-gold-40" />
 
-      <div className="container-pr py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="container-pr py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-pr-gold mb-3">
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <p className="font-sans text-[10px] text-pr-taupe leading-relaxed max-w-2xl">
             <strong className="text-pr-grey">Disclaimer:</strong> All details including price, area, configuration, and amenities are indicative and subject to change without notice. Images shown are for representation purposes only. This communication is not an offer or invitation to purchase. Buyers are advised to do their own due diligence before making any purchase decision. MAHA RERA: {SITE.rera}
           </p>

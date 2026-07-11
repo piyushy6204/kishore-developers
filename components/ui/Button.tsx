@@ -2,7 +2,7 @@
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "gold" | "outline" | "ghost";
+type Variant = "gold" | "outline";
 type Size = "sm" | "md" | "lg";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,10 +12,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
+// All primary buttons: champagne gold bg + white text
+// Outline: transparent bg + charcoal border (used for secondary/close actions only)
 const variantStyles: Record<Variant, string> = {
   gold: "bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark",
-  outline: "bg-transparent text-pr-charcoal border border-pr-charcoal hover:bg-pr-charcoal hover:text-pr-white",
-  ghost: "bg-transparent text-pr-gold border border-pr-gold hover:bg-pr-gold hover:text-white",
+  outline: "bg-transparent text-pr-charcoal border border-pr-charcoal hover:bg-pr-charcoal hover:text-white",
 };
 
 const sizeStyles: Record<Size, string> = {

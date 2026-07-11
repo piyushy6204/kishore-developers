@@ -73,16 +73,15 @@ export default function FloorPlans() {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <Button
+                  <a
                     id={`floorplan-get-${active}`}
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setModalOpen(true)}
-                    className="flex items-center gap-1.5"
+                    href={FLOOR_PLANS[active].image}
+                    download={`Platinum-Royale-${FLOOR_PLANS[active].label}.jpg`}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-5 py-2.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
                   >
                     <Download size={12} strokeWidth={1.5} />
                     Get Plan
-                  </Button>
+                  </a>
                   <Button
                     id={`floorplan-visit-${active}`}
                     variant="gold"

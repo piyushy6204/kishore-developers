@@ -167,9 +167,12 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
                   Click here to download brochure
                 </a>
               )}
-              <Button variant="outline" size="sm" className="mt-6" onClick={onClose}>
+              <button
+                onClick={onClose}
+                className="mt-6 font-sans text-xs uppercase tracking-widest text-pr-muted hover:text-pr-charcoal transition-colors cursor-pointer"
+              >
                 Close
-              </Button>
+              </button>
             </div>
           )}
         </div>

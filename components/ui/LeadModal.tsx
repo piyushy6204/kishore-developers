@@ -46,7 +46,7 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-pr-charcoal/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-pr-charcoal-60 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />

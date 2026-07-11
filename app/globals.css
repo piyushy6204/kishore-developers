@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-cormorant: "Cormorant Garamond", Georgia, serif;
-  --font-inter: "Inter", "Helvetica Neue", sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", "Helvetica Neue", sans-serif;
 
+  /* Platinum Royale Color Palette */
   --color-pr-white: #FAFAF8;
   --color-pr-off-white: #F3F0EB;
   --color-pr-gold: #B8976A;
@@ -16,8 +17,27 @@
   --color-pr-charcoal: #1C1C1A;
   --color-pr-muted: #6B6B65;
   --color-pr-muted-light: #9B9B94;
+
+  /* Custom box shadows */
+  --shadow-luxury: 0 4px 40px -8px rgba(28,28,26,0.10);
+  --shadow-luxury-lg: 0 8px 60px -12px rgba(28,28,26,0.14);
+  --shadow-luxury-sm: 0 2px 16px -4px rgba(28,28,26,0.08);
+  --shadow-card: 0 2px 24px -6px rgba(28,28,26,0.09);
+  --shadow-card-hover: 0 8px 40px -8px rgba(28,28,26,0.15);
+  --shadow-glass: 0 4px 32px -8px rgba(28,28,26,0.10);
+
+  /* Border radius */
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+
+  /* Font sizes — clamp-based fluid type */
+  --font-size-display-xl: clamp(3rem, 8vw, 7rem);
+  --font-size-display-lg: clamp(2.5rem, 6vw, 5.5rem);
+  --font-size-display-md: clamp(2rem, 4vw, 3.5rem);
+  --font-size-display-sm: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* ─── Base Reset ──────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -29,40 +49,29 @@ html {
 }
 
 body {
-  background-color: #FAFAF8;
-  color: #1C1C1A;
-  font-family: var(--font-inter), "Helvetica Neue", sans-serif;
+  background-color: var(--color-pr-white);
+  color: var(--color-pr-charcoal);
+  font-family: var(--font-inter, "Inter"), "Helvetica Neue", sans-serif;
   line-height: 1.6;
 }
 
 ::selection {
-  background-color: #B8976A;
-  color: #FAFAF8;
+  background-color: var(--color-pr-gold);
+  color: var(--color-pr-white);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #F3F0EB;
-}
-::-webkit-scrollbar-thumb {
-  background: #B8976A;
-  border-radius: 2px;
-}
+/* ─── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--color-pr-off-white); }
+::-webkit-scrollbar-thumb { background: var(--color-pr-gold); border-radius: 2px; }
 
-/* Utility classes */
+/* ─── Layout Utilities ─────────────────────────── */
 .section-padding {
   padding-top: 6rem;
   padding-bottom: 6rem;
 }
-
 @media (max-width: 768px) {
-  .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
+  .section-padding { padding-top: 4rem; padding-bottom: 4rem; }
 }
 
 .container-pr {
@@ -72,67 +81,138 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
 }
-
 @media (max-width: 768px) {
-  .container-pr {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
+  .container-pr { padding-left: 1.25rem; padding-right: 1.25rem; }
 }
 
-/* Image hover reveal */
-.img-reveal {
-  overflow: hidden;
+/* ─── Typography Utilities ─────────────────────── */
+.font-serif { font-family: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif; }
+.font-sans  { font-family: var(--font-inter, "Inter"), "Helvetica Neue", sans-serif; }
+
+.text-display-xl {
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
 }
+.text-display-lg {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+.text-display-md {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.text-display-sm {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+/* ─── Color Utilities ──────────────────────────── */
+.bg-pr-white      { background-color: var(--color-pr-white); }
+.bg-pr-off-white  { background-color: var(--color-pr-off-white); }
+.bg-pr-gold       { background-color: var(--color-pr-gold); }
+.bg-pr-gold-dark  { background-color: var(--color-pr-gold-dark); }
+.bg-pr-beige      { background-color: var(--color-pr-beige); }
+.bg-pr-charcoal   { background-color: var(--color-pr-charcoal); }
+
+.text-pr-white      { color: var(--color-pr-white); }
+.text-pr-off-white  { color: var(--color-pr-off-white); }
+.text-pr-gold       { color: var(--color-pr-gold); }
+.text-pr-gold-light { color: var(--color-pr-gold-light); }
+.text-pr-gold-dark  { color: var(--color-pr-gold-dark); }
+.text-pr-beige      { color: var(--color-pr-beige); }
+.text-pr-taupe      { color: var(--color-pr-taupe); }
+.text-pr-grey       { color: var(--color-pr-grey); }
+.text-pr-walnut     { color: var(--color-pr-walnut); }
+.text-pr-charcoal   { color: var(--color-pr-charcoal); }
+.text-pr-muted      { color: var(--color-pr-muted); }
+.text-pr-muted-light { color: var(--color-pr-muted-light); }
+
+.border-pr-gold    { border-color: var(--color-pr-gold); }
+.border-pr-beige   { border-color: var(--color-pr-beige); }
+.border-pr-charcoal { border-color: var(--color-pr-charcoal); }
+.border-pr-white   { border-color: var(--color-pr-white); }
+
+/* ─── Shadow Utilities ─────────────────────────── */
+.shadow-luxury    { box-shadow: var(--shadow-luxury); }
+.shadow-luxury-lg { box-shadow: var(--shadow-luxury-lg); }
+.shadow-luxury-sm { box-shadow: var(--shadow-luxury-sm); }
+.shadow-card      { box-shadow: var(--shadow-card); }
+.shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+.shadow-glass     { box-shadow: var(--shadow-glass); }
+
+/* ─── Image Reveal ─────────────────────────────── */
+.img-reveal { overflow: hidden; }
 .img-reveal img {
   transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-.img-reveal:hover img {
-  transform: scale(1.05);
-}
+.img-reveal:hover img { transform: scale(1.05); }
 
-/* Gold line divider */
+/* ─── Gold Divider ─────────────────────────────── */
 .gold-divider {
   display: block;
   width: 48px;
   height: 1px;
-  background-color: #B8976A;
+  background-color: var(--color-pr-gold);
   margin-bottom: 1.5rem;
 }
 
-/* Masonry gallery */
-.masonry-gallery {
-  columns: 3;
-  column-gap: 1rem;
-}
-@media (max-width: 900px) {
-  .masonry-gallery {
-    columns: 2;
-  }
-}
-@media (max-width: 600px) {
-  .masonry-gallery {
-    columns: 1;
-  }
-}
-.masonry-gallery .masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1rem;
-}
+/* ─── Masonry Gallery ──────────────────────────── */
+.masonry-gallery { columns: 3; column-gap: 1rem; }
+@media (max-width: 900px) { .masonry-gallery { columns: 2; } }
+@media (max-width: 600px) { .masonry-gallery { columns: 1; } }
+.masonry-gallery .masonry-item { break-inside: avoid; margin-bottom: 1rem; }
 
-/* Number counter pulse */
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* Scroll progress bar */
+/* ─── Scroll Progress Bar ──────────────────────── */
 #scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 2px;
-  background: #B8976A;
+  background: var(--color-pr-gold);
   z-index: 9999;
   transition: width 0.1s linear;
 }
+
+/* ─── Animations ───────────────────────────────── */
+@keyframes pulseSoft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse-soft { animation: pulseSoft 3s ease-in-out infinite; }
+
+/* ─── Opacity Variant Utilities (Tailwind v4 CSS-var colors) ─ */
+/* Gold opacity variants */
+.bg-pr-gold-10  { background-color: color-mix(in srgb, var(--color-pr-gold) 10%, transparent); }
+.bg-pr-gold-20  { background-color: color-mix(in srgb, var(--color-pr-gold) 20%, transparent); }
+.bg-pr-gold-40  { background-color: color-mix(in srgb, var(--color-pr-gold) 40%, transparent); }
+.border-pr-gold-40 { border-color: color-mix(in srgb, var(--color-pr-gold) 40%, transparent); }
+.border-pr-gold-30 { border-color: color-mix(in srgb, var(--color-pr-gold) 30%, transparent); }
+.border-pr-gold-50 { border-color: color-mix(in srgb, var(--color-pr-gold) 50%, transparent); }
+/* Beige opacity variants */
+.border-pr-beige-40 { border-color: color-mix(in srgb, var(--color-pr-beige) 40%, transparent); }
+.border-pr-beige-60 { border-color: color-mix(in srgb, var(--color-pr-beige) 60%, transparent); }
+.divide-pr-beige-60 > * + * { border-color: color-mix(in srgb, var(--color-pr-beige) 60%, transparent); }
+/* Charcoal opacity */
+.bg-pr-charcoal-60  { background-color: color-mix(in srgb, var(--color-pr-charcoal) 60%, transparent); }
+.bg-pr-charcoal-90  { background-color: color-mix(in srgb, var(--color-pr-charcoal) 90%, transparent); }
+/* White opacity */
+.bg-white-80 { background-color: rgba(255,255,255,0.80); }
+.bg-white-90 { background-color: rgba(255,255,255,0.90); }
+/* Distance badge */
+.badge-gold {
+  background-color: color-mix(in srgb, var(--color-pr-gold) 10%, transparent);
+  color: var(--color-pr-gold-dark);
+}
+
+/* ─── Backdrop blur utilities ─────────────────────── */
+.backdrop-blur-sm  { backdrop-filter: blur(4px); }
+.backdrop-blur-md  { backdrop-filter: blur(12px); }
+
+/* ─── White/opacity border helpers ────────────────── */
+.border-white-10 { border-color: rgba(255,255,255,0.10); }
+.border-white-50 { border-color: rgba(255,255,255,0.50); }
+

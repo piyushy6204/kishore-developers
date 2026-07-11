@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +17,10 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#B8976A",
+};
+
 export const metadata: Metadata = {
   title: "Platinum Royale — Premium 2 BHK Residences in Wakad, Pune | Kishor Developers",
   description:
@@ -29,13 +33,25 @@ export const metadata: Metadata = {
     locale: "en_IN",
   },
   robots: "index, follow",
-  themeColor: "#B8976A",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="bg-pr-white text-pr-charcoal antialiased">
+    <html lang="en" className={`${cormorant.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="bg-pr-white text-pr-charcoal antialiased" suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                  for(let registration of registrations) {
+                    registration.unregister();
+                  }
+                });
+              }
+            `,
+          }}
+        />
         {children}
       </body>
     </html>

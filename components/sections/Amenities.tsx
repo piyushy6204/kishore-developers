@@ -8,7 +8,7 @@ import { AMENITIES } from "@/lib/content";
 import { useInView } from "@/lib/useInView";
 import {
   DoorOpen, Sun, Dumbbell, Baby, Leaf, Car,
-  Droplets, Zap, ShieldCheck,
+  Droplets, Zap, ShieldCheck, X
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -27,6 +27,7 @@ export default function Amenities() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { threshold: 0.1 });
   const [modalOpen, setModalOpen] = useState(false);
+  const [amenitiesModalOpen, setAmenitiesModalOpen] = useState(false);
 
   return (
     <>
@@ -40,11 +41,10 @@ export default function Amenities() {
             className="object-cover"
             sizes="95vw"
           />
-          <div className="absolute inset-0 flex items-end p-8">
-            <div>
-              <SectionLabel className="mb-2">Section 04</SectionLabel>
-              <h2 id="amenities-heading" className="font-serif text-display-md text-white leading-tight">
-                Every Amenity.<br />Every Comfort.<br /><em className="not-italic text-pr-gold-light">Every Day.</em>
+          <div className="absolute inset-0 flex items-end p-8 pb-12 md:pb-16">
+            <div className="relative z-10">
+              <h2 id="amenities-heading" className="font-serif text-display-md text-white leading-tight drop-shadow-md">
+                Every Amenity.<br />Every Comfort.<br />Every Day.
               </h2>
             </div>
           </div>
@@ -53,14 +53,15 @@ export default function Amenities() {
         </div>
 
         <div className="container-pr" ref={ref}>
-          {/* Amenities grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 mb-12">
+          {/* Amenities horizontal scroll */}
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:mx-0 md:px-0">
             {AMENITIES.map((item, i) => {
               const Icon = ICON_MAP[item.icon] || Leaf;
               return (
                 <div
                   key={item.name}
-                  className={`group bg-white rounded-2xl p-7 flex flex-col items-center text-center shadow-card border border-pr-beige-40 cursor-default transition-all duration-[400ms] hover:shadow-card-hover hover:-translate-y-1 hover:border-pr-gold-30 ${
+                  onClick={() => setAmenitiesModalOpen(true)}
+                  className={`flex-shrink-0 w-[65vw] sm:w-[250px] snap-start group bg-white rounded-2xl p-7 flex flex-col items-center text-center shadow-card border border-pr-beige-40 cursor-pointer transition-all duration-[400ms] hover:shadow-card-hover hover:-translate-y-1 hover:border-pr-gold-30 ${
                     inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
                   }`}
                   style={{ transitionDelay: `${i * 60}ms`, transitionDuration: "500ms" }}
@@ -90,6 +91,61 @@ export default function Amenities() {
       </section>
 
       <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} trigger="visit" />
+
+      {/* Amenities Modal */}
+      {amenitiesModalOpen && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="All Amenities"
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-pr-charcoal-60 backdrop-blur-sm"
+            onClick={() => setAmenitiesModalOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Modal card */}
+          <div className="relative z-10 w-full max-w-2xl bg-pr-white rounded-2xl shadow-luxury-lg overflow-hidden flex flex-col max-h-[85vh]">
+            {/* Gold top border */}
+            <div className="h-0.5 w-full bg-pr-gold flex-shrink-0" />
+
+            <div className="p-6 md:p-8 flex justify-between items-center border-b border-pr-beige flex-shrink-0">
+              <h3 className="font-serif text-2xl text-pr-charcoal">All Amenities</h3>
+              <button
+                className="text-pr-muted hover:text-pr-charcoal transition-colors p-1"
+                onClick={() => setAmenitiesModalOpen(false)}
+                aria-label="Close amenities"
+              >
+                <X size={24} strokeWidth={1.5} />
+              </button>
+            </div>
+
+            <div className="p-6 md:p-8 overflow-y-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                {AMENITIES.map((item) => {
+                  const Icon = ICON_MAP[item.icon] || Leaf;
+                  return (
+                    <div
+                      key={item.name}
+                      className="bg-white rounded-xl p-5 flex flex-col items-center text-center shadow-sm border border-pr-beige-40"
+                    >
+                      <div className="w-10 h-10 rounded-full bg-pr-off-white flex items-center justify-center mb-3">
+                        <Icon size={18} strokeWidth={1.5} className="text-pr-gold" />
+                      </div>
+                      <p className="font-sans text-xs font-medium text-pr-charcoal leading-snug">
+                        {item.name}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

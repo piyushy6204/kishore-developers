@@ -52,7 +52,7 @@ export default function AboutDeveloper() {
             </h2>
             <p className="font-sans text-sm text-pr-grey leading-loose mb-6 max-w-md">
               For over two decades, Kishor Developers has been crafting homes that go beyond
-              construction — homes that become the foundation of cherished memories, lasting
+              construction, homes that become the foundation of cherished memories, lasting
               relationships, and generational value.
             </p>
             <p className="font-sans text-sm text-pr-grey leading-loose max-w-md">

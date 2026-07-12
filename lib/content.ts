@@ -134,7 +134,7 @@ export const ABOUT_STATS = [
   { value: 20, suffix: "+", label: "Years of Experience" },
   { value: 1000, suffix: "+", label: "Properties Delivered" },
   { value: 100, suffix: "%", label: "Customer First" },
-  { value: 0, suffix: " Delays", label: "Timely Delivery" },
+  { value: 0, suffix: " Delay", label: "Timely Delivery" },
 ];
 
 export const VISIT_BENEFITS = [

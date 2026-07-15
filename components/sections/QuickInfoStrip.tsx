@@ -7,13 +7,14 @@ export default function QuickInfoStrip() {
   return (
     <section className="relative z-20 -mt-8 container-pr" aria-label="Project quick information">
       <div className="bg-white-90 backdrop-blur-md rounded-2xl shadow-luxury border border-pr-beige-60 px-6 py-5">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-0 divide-x divide-pr-beige-60">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-0 divide-y md:divide-y-0 divide-x-0 md:divide-x divide-pr-taupe/30">
           {QUICK_INFO.map((item, i) => {
             const Icon = ICONS[i];
+            const isLast = i === QUICK_INFO.length - 1;
             return (
               <div
                 key={item.label}
-                className="flex flex-col items-center text-center px-4 py-2"
+                className={`flex flex-col items-center text-center px-4 py-2 ${isLast ? "col-span-2 md:col-span-1" : ""} ${i > 0 && !isLast ? "border-l border-pr-taupe/30 md:border-l-0" : ""}`}
               >
                 <Icon size={16} strokeWidth={1.5} className="text-pr-gold mb-2" />
                 <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-pr-muted mb-1">

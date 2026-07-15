@@ -32,26 +32,29 @@ export default function Hero() {
           sizes="100vw"
         />
 
-        {/* Dark gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/20" />
-        {/* Extra bottom gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        {/* Dark gradient overlay — stronger on mobile */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
+        {/* Bottom gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        {/* Mobile-only top darkening so header area text is readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent md:hidden" />
 
-        {/* Content — sits below fixed header using pt-[80px] */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-[80px] px-6 md:px-16 lg:px-24 pb-16">
+        {/* Content — sits below fixed header using pt-[80px], shifted up on mobile */}
+        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-[80px] px-6 md:px-16 lg:px-24 pb-16 md:pb-16">
           <div className="max-w-2xl">
             {/* Developer tag */}
             <div
               className={`flex items-center gap-3 mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             >
-              <span className="font-sans text-sm md:text-base uppercase tracking-[0.3em] text-pr-gold-light font-medium">
+              <span className="font-sans text-base md:text-lg uppercase tracking-[0.3em] text-pr-gold font-semibold drop-shadow-lg" style={{ textShadow: '0 2px 12px rgba(0,0,0,0.8)' }}>
                 Kishor Developers Presents
               </span>
             </div>
 
             {/* Headline */}
             <h1
-              className={`font-serif text-display-xl text-white leading-[0.95] mb-6 transition-all duration-700 delay-150 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              className={`font-serif text-display-lg text-white leading-[0.95] mb-6 transition-all duration-700 delay-150 drop-shadow-2xl ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={{ textShadow: '0 4px 24px rgba(0,0,0,0.75)' }}
             >
               Find Your<br />
               <em className="not-italic text-pr-gold">Place</em> In<br />

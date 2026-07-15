@@ -10,6 +10,7 @@ import ProjectOverview from "@/components/sections/ProjectOverview";
 import Amenities from "@/components/sections/Amenities";
 import FloorPlans from "@/components/sections/FloorPlans";
 import Gallery from "@/components/sections/Gallery";
+import SampleFlat from "@/components/sections/SampleFlat";
 import LocationAdvantages from "@/components/sections/LocationAdvantages";
 import Specifications from "@/components/sections/Specifications";
 import AboutDeveloper from "@/components/sections/AboutDeveloper";
@@ -30,6 +31,7 @@ export default function HomePage() {
         <QuickInfoStrip />
         <LeadForm />
         <ProjectOverview />
+        <SampleFlat />
         <Amenities />
         <FloorPlans />
         <Gallery />

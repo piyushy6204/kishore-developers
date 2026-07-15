@@ -80,7 +80,7 @@ export default function Amenities() {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-4">
             <button
               onClick={() => setAmenitiesModalOpen(true)}
               className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-pr-gold hover:text-pr-gold-dark transition-colors border border-pr-gold/30 hover:border-pr-gold rounded-full px-6 py-2.5"

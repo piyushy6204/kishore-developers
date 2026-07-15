@@ -25,6 +25,7 @@ export const NAV_LINKS = [
   { label: "Overview", href: "#overview" },
   { label: "Amenities", href: "#amenities" },
   { label: "Floor Plans", href: "#floor-plans" },
+  { label: "Sample Flat", href: "#sample-flat" },
   { label: "Gallery", href: "#gallery" },
   { label: "Location", href: "#location" },
   { label: "Contact", href: "#contact" },
@@ -75,6 +76,17 @@ export const GALLERY_IMAGES = [
   { category: "Ale Deck Club", src: "/PLATINUM ROYALE BROCHURE_pages-to-jpg-0006.jpg", alt: "Ale Deck Club" },
   { category: "Fitness Area", src: "/fitness_area.png", alt: "Rooftop Fitness Area" },
   { category: "Night Elevation", src: "/night_life.png", alt: "Platinum Royale Night Elevation" },
+];
+
+export const SAMPLE_FLAT_IMAGES = [
+  { src: "/sample_flat1.jpeg", alt: "Living Room" },
+  { src: "/sample_flat2.jpeg", alt: "Master Bedroom" },
+  { src: "/sample_flat3.jpeg", alt: "Dining Area" },
+  { src: "/sample_flat4.jpeg", alt: "Bathroom" },
+  { src: "/sample_flat5.jpeg", alt: "Modern Kitchen" },
+  { src: "/sample_flat6.jpeg", alt: "Living Room (Alternate View)" },
+  { src: "/sample_flat7.jpeg", alt: "Bedroom" },
+  { src: "/sample_flat8.jpeg", alt: "Bedroom (Alternate View)" },
 ];
 
 export const LOCATION_ADVANTAGES = [

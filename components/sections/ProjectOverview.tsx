@@ -11,7 +11,7 @@ export default function ProjectOverview() {
 
   return (
     <>
-      <section id="overview" className="section-padding bg-pr-white" aria-labelledby="overview-heading">
+      <section id="overview" className="section-padding bg-pr-off-white" aria-labelledby="overview-heading">
         <div className="container-pr">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center" ref={ref}>
             {/* Image side */}

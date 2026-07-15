@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import Button from "@/components/ui/Button";
-import LeadModal from "@/components/ui/LeadModal";
 import { AMENITIES } from "@/lib/content";
 import { useInView } from "@/lib/useInView";
 import {
@@ -26,7 +25,6 @@ const ICON_MAP: Record<string, React.ElementType> = {
 export default function Amenities() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { threshold: 0.1 });
-  const [modalOpen, setModalOpen] = useState(false);
   const [amenitiesModalOpen, setAmenitiesModalOpen] = useState(false);
 
   return (
@@ -82,15 +80,16 @@ export default function Amenities() {
           </div>
 
           {/* CTA */}
-          <div className="text-center">
-            <Button id="amenities-visit" variant="gold" size="lg" onClick={() => setModalOpen(true)}>
-              Schedule Site Visit
-            </Button>
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setAmenitiesModalOpen(true)}
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-pr-gold hover:text-pr-gold-dark transition-colors border border-pr-gold/30 hover:border-pr-gold rounded-full px-6 py-2.5"
+            >
+              View All Amenities
+            </button>
           </div>
         </div>
       </section>
-
-      <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} trigger="visit" />
 
       {/* Amenities Modal */}
       {amenitiesModalOpen && (

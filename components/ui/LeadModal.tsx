@@ -21,7 +21,7 @@ const TRIGGER_SUBTITLES: Record<string, string> = {
 };
 
 export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadModalProps) {
-  const [form, setForm] = useState({ name: "", phone: "", config: "" });
+  const [form, setForm] = useState({ name: "", phone: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -115,22 +115,10 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="modal-config" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
-                    Preferred Configuration
-                  </label>
-                  <select
-                    id="modal-config"
-                    value={form.config}
-                    onChange={(e) => setForm({ ...form, config: e.target.value })}
-                    className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal focus:outline-none focus:ring-1 focus:ring-pr-gold transition appearance-none"
-                  >
-                    <option value="">Select configuration</option>
-                    <option value="2bhk-type1">Premium 2 BHK – Type 1</option>
-                    <option value="2bhk-type2">Premium 2 BHK – Type 2</option>
-                    <option value="2bhk-type3">Premium 2 BHK – Type 3</option>
-                    <option value="2bhk-type4">Premium 2 BHK – Type 4</option>
-                  </select>
+                {/* Static configuration badge */}
+                <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between">
+                  <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
+                  <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
                 </div>
 
                 <Button type="submit" variant="gold" size="lg" className="w-full mt-2">

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 import LeadModal from "@/components/ui/LeadModal";
 import { NAV_LINKS } from "@/lib/content";
@@ -40,13 +41,20 @@ export default function StickyHeader() {
       <header className="fixed top-0 left-0 right-0 z-[100] bg-white shadow-luxury-sm py-4">
         <div className="container-pr flex items-center justify-between">
           {/* Logo */}
-          <div className="flex flex-col leading-none">
-            <span className="font-serif text-lg font-medium text-pr-charcoal tracking-tight">
-              Platinum Royale
-            </span>
-            <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-pr-gold mt-0.5">
-              by Kishor Developers
-            </span>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollTo("#hero")}>
+            <Image 
+              src="/kishore_dev-logof.jpeg" 
+              alt="Kishor Developers" 
+              width={140} 
+              height={60} 
+              className="object-contain h-8 sm:h-10 w-auto"
+            />
+            <div className="h-6 sm:h-8 w-px bg-pr-beige hidden sm:block" />
+            <div className="flex flex-col leading-none hidden sm:flex">
+              <span className="font-serif text-lg sm:text-xl font-medium text-pr-charcoal tracking-tight">
+                Platinum Royale
+              </span>
+            </div>
           </div>
 
           {/* Desktop Nav */}
@@ -55,11 +63,10 @@ export default function StickyHeader() {
               <button
                 key={link.href}
                 onClick={() => scrollTo(link.href)}
-                className={`font-sans text-xs uppercase tracking-widest transition-colors duration-200 cursor-pointer ${
-                  activeSection === link.href
+                className={`font-sans text-xs uppercase tracking-widest transition-colors duration-200 cursor-pointer ${activeSection === link.href
                     ? "text-pr-gold"
                     : "text-pr-muted hover:text-pr-charcoal"
-                }`}
+                  }`}
               >
                 {link.label}
               </button>

@@ -28,6 +28,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <QuickInfoStrip />
+        <LeadForm />
         <ProjectOverview />
         <Amenities />
         <FloorPlans />

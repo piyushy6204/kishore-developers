@@ -9,7 +9,6 @@ export default function LeadForm() {
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    email: "",
     config: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -110,21 +109,6 @@ export default function LeadForm() {
                     {errors.phone && <p className="text-red-500 text-xs mt-1 font-sans">{errors.phone}</p>}
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="contact-email" className="block font-sans text-[10px] uppercase tracking-widest text-pr-muted mb-2">
-                      Email <span className="text-pr-muted-light">(Optional)</span>
-                    </label>
-                    <input
-                      id="contact-email"
-                      type="email"
-                      value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      placeholder="your@email.com"
-                      className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition"
-                    />
-                  </div>
-
                   {/* Config */}
                   <div>
                     <label htmlFor="contact-config" className="block font-sans text-[10px] uppercase tracking-widest text-pr-muted mb-2">
@@ -137,10 +121,10 @@ export default function LeadForm() {
                       className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal focus:outline-none focus:ring-1 focus:ring-pr-gold transition appearance-none"
                     >
                       <option value="">Select configuration</option>
-                      <option value="2bhk-type1">Premium 2 BHK – Type 1</option>
-                      <option value="2bhk-type2">Premium 2 BHK – Type 2</option>
-                      <option value="2bhk-type3">Premium 2 BHK – Type 3</option>
-                      <option value="2bhk-type4">Premium 2 BHK – Type 4</option>
+                      <option value="654-sqft">Premium 2 BHK – 654 Sq.Ft. (Series 101-1101)</option>
+                      <option value="637-sqft">Premium 2 BHK – 637 Sq.Ft. (Series 102-1102)</option>
+                      <option value="632-sqft">Premium 2 BHK – 632 Sq.Ft. (Series 103-1103)</option>
+                      <option value="645-sqft">Premium 2 BHK – 645 Sq.Ft. (Series 104-1104)</option>
                     </select>
                   </div>
 

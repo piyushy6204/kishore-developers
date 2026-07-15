@@ -44,7 +44,7 @@ export default function Hero() {
             <div
               className={`flex items-center gap-3 mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             >
-              <span className="font-sans text-xs uppercase tracking-[0.3em] text-pr-gold-light">
+              <span className="font-sans text-sm md:text-base uppercase tracking-[0.3em] text-pr-gold-light font-medium">
                 Kishor Developers Presents
               </span>
             </div>

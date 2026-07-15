@@ -1,5 +1,6 @@
 "use client";
 import { SITE } from "@/lib/content";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -11,10 +12,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-pr-gold mb-3">
-              Kishor Developers
-            </p>
-            <h3 className="font-serif text-3xl font-light text-pr-white mb-4 leading-tight">
+            <div className="mb-4 inline-block bg-white rounded-md p-1.5">
+              <Image 
+                src="/kishore_dev-logof.jpeg" 
+                alt="Kishor Developers" 
+                width={140} 
+                height={60} 
+                className="object-contain h-12 w-auto"
+              />
+            </div>
+            <h3 className="font-serif text-xl font-light text-pr-white mb-4 leading-tight">
               Platinum Royale
             </h3>
             <p className="font-sans text-xs text-pr-grey leading-relaxed">

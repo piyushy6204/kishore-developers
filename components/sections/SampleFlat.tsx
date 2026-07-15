@@ -9,75 +9,73 @@ export default function SampleFlat() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
-    <section id="sample-flat" className="section-padding bg-pr-white" aria-labelledby="sample-flat-heading">
-      <div className="container-pr">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <SectionLabel className="mb-4 justify-center">Experience Luxury</SectionLabel>
-          <h2 id="sample-flat-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
-            Our Demo Flat
-          </h2>
-          <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
-        </div>
+    <>
+      <section id="sample-flat" className="section-padding bg-pr-white" aria-labelledby="sample-flat-heading">
+        <div className="container-pr">
+          {/* Header */}
+          <div className="mb-10">
+            <SectionLabel>Demo Flat</SectionLabel>
+            <h2 id="sample-flat-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
+              Our Demo Flat
+            </h2>
+          </div>
 
-        {/* Sliding View */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:mx-0 md:px-0">
-          {SAMPLE_FLAT_IMAGES.map((img, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-[85vw] sm:w-[320px] md:w-[400px] snap-start relative group overflow-hidden rounded-2xl shadow-luxury-sm cursor-pointer border border-pr-beige bg-pr-off-white"
-              onClick={() => setLightboxIndex(index)}
-            >
-              <div className="relative w-full aspect-[4/3]">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 768px) 85vw, (max-width: 1200px) 400px, 400px"
-                />
+          {/* Horizontal Swipe Slider */}
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
+            {SAMPLE_FLAT_IMAGES.map((img, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-[85vw] sm:w-[320px] md:w-[400px] snap-start cursor-pointer group"
+                onClick={() => setLightboxIndex(index)}
+              >
+                <div className="relative w-full h-[260px] md:h-[320px] rounded-2xl overflow-hidden shadow-card border border-pr-beige">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 85vw, 400px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-pr-charcoal/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <ZoomIn className="text-pr-gold mb-2" size={20} />
+                    <p className="font-sans text-sm font-medium text-pr-white tracking-wide">
+                      {img.alt}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-pr-charcoal/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <ZoomIn className="text-pr-gold mb-3" size={24} />
-                <p className="font-sans font-medium text-pr-white tracking-wide">
-                  {img.alt}
-                </p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8"
-          role="dialog"
-          aria-modal="true"
+          className="fixed inset-0 z-[300] bg-pr-charcoal/90 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLightboxIndex(null)}
         >
           <button
+            className="absolute top-5 right-5 text-white/70 hover:text-white transition"
             onClick={() => setLightboxIndex(null)}
-            className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white/70 hover:text-white transition-colors"
             aria-label="Close lightbox"
           >
-            <X size={32} strokeWidth={1.5} />
+            <X size={24} strokeWidth={1.5} />
           </button>
-          
-          <div className="relative w-full max-w-5xl aspect-[4/3] sm:aspect-video rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative w-full max-w-4xl h-[75vh] rounded-2xl overflow-hidden">
             <Image
               src={SAMPLE_FLAT_IMAGES[lightboxIndex].src}
               alt={SAMPLE_FLAT_IMAGES[lightboxIndex].alt}
               fill
               className="object-contain"
-              sizes="100vw"
-              priority
+              sizes="(max-width: 896px) 100vw, 896px"
             />
           </div>
-          
-          <p className="absolute bottom-8 left-0 right-0 text-center font-sans text-sm tracking-widest uppercase text-pr-gold">
+          <p className="absolute bottom-6 left-0 right-0 text-center font-sans text-sm tracking-widest uppercase text-pr-gold">
             {SAMPLE_FLAT_IMAGES[lightboxIndex].alt}
           </p>
         </div>
       )}
-    </section>
+    </>
   );
 }

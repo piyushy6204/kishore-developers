@@ -52,7 +52,7 @@ export default function Amenities() {
 
         <div className="container-pr" ref={ref}>
           {/* Amenities horizontal scroll */}
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-12 lg:px-12">
             {AMENITIES.map((item, i) => {
               const Icon = ICON_MAP[item.icon] || Leaf;
               return (

@@ -19,28 +19,37 @@ export default function Hero() {
       {/* Full-viewport hero — image fills entire section, text overlaid */}
       <section
         id="hero"
-        className="relative w-full min-h-[80vh] md:min-h-screen overflow-hidden"
+        className="relative w-full min-h-[95svh] md:min-h-screen overflow-hidden bg-pr-charcoal"
         aria-label="Platinum Royale Hero"
       >
-        {/* Background image — fills full section */}
+        {/* Background image — Desktop */}
         <Image
           src="/hero_image.png"
           alt="Platinum Royale — Premium Residences Wakad Pune"
           fill
-          className="object-cover object-center"
+          className="hidden md:block object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Background image — Mobile */}
+        <Image
+          src="/hero_f.png"
+          alt="Platinum Royale — Premium Residences Wakad Pune"
+          fill
+          className="block md:hidden object-cover object-center"
           priority
           sizes="100vw"
         />
 
-        {/* Dark gradient overlay — stronger on mobile */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
-        {/* Bottom gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        {/* Mobile-only top darkening so header area text is readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent md:hidden" />
+        {/* Dark gradient overlay — Desktop only */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/20" />
+        {/* Bottom gradient — Desktop only */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        {/* Mobile-only top darkening removed as per request to keep image clear */}
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent md:hidden" /> */}
 
         {/* Content — sits below fixed header using pt-[80px], shifted up on mobile */}
-        <div className="relative z-10 flex flex-col justify-center min-h-screen pt-[80px] px-6 md:px-16 lg:px-24 pb-16 md:pb-16">
+        <div className="hidden md:flex relative z-10 flex-col justify-center min-h-screen pt-[80px] px-6 md:px-16 lg:px-24 pb-16 md:pb-16">
           <div className="max-w-2xl">
             {/* Developer tag */}
             <div

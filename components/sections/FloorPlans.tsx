@@ -23,7 +23,8 @@ export default function FloorPlans() {
     if (tabsContainer) {
       const activeTab = tabsContainer.children[active] as HTMLElement;
       if (activeTab) {
-        activeTab.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const scrollLeft = activeTab.offsetLeft - (tabsContainer.offsetWidth / 2) + (activeTab.offsetWidth / 2);
+        tabsContainer.scrollTo({ left: scrollLeft, behavior: "smooth" });
       }
     }
   }, [active]);
@@ -53,8 +54,10 @@ export default function FloorPlans() {
     setActive(index);
     if (typeof window !== "undefined" && window.innerWidth < 768 && scrollContainerRef.current) {
       const cards = scrollContainerRef.current.children;
-      if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const targetCard = cards[index] as HTMLElement;
+      if (targetCard) {
+        const scrollLeft = targetCard.offsetLeft - (scrollContainerRef.current.offsetWidth / 2) + (targetCard.offsetWidth / 2);
+        scrollContainerRef.current.scrollTo({ left: scrollLeft, behavior: "smooth" });
       }
     }
   };

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { useInView } from "framer-motion";
+import { useInView } from "@/lib/useInView";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { SAMPLE_FLAT_IMAGES } from "@/lib/content";
 import { X, ZoomIn } from "lucide-react";

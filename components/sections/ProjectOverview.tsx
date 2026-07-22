@@ -56,7 +56,7 @@ export default function ProjectOverview() {
                 </h2>
               </div>
 
-              <p className="font-sans text-sm text-pr-muted leading-loose mb-10 max-w-md">
+              <p className="font-sans text-sm text-pr-muted leading-loose mb-10 max-w-md text-justify">
                 More than just a residence, Platinum Royale is a thoughtfully curated lifestyle destination.
                 Designed with elegant architecture, intelligent planning, and premium finishes,
                 every home reflects comfort, sophistication, and lasting value.
@@ -70,8 +70,8 @@ export default function ProjectOverview() {
                     className={`border-l-2 border-pr-gold pl-4 py-1 transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     style={{ transitionDelay: `${300 + i * 80}ms` }}
                   >
-                    <p className="font-sans text-xs font-medium text-pr-charcoal mb-1">{item.title}</p>
-                    <p className="font-sans text-[11px] text-pr-muted leading-relaxed">{item.detail}</p>
+                    <p className="font-sans text-sm font-medium text-pr-charcoal mb-1">{item.title}</p>
+                    <p className="font-sans text-xs text-pr-muted leading-relaxed">{item.detail}</p>
                   </div>
                 ))}
               </div>

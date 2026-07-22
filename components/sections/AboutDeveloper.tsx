@@ -12,7 +12,18 @@ export default function AboutDeveloper() {
   return (
     <section id="about" className="section-padding bg-pr-charcoal text-pr-white overflow-hidden" aria-labelledby="about-heading">
       <div className="container-pr">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" ref={ref}>
+        {/* Mobile-only Header */}
+        <div className="block lg:hidden text-center mb-10" ref={ref}>
+          <p className="font-sans text-lg md:text-xl uppercase tracking-[0.25em] text-pr-gold font-bold mb-4 drop-shadow-sm">
+            About Kishor Developers
+          </p>
+          <h2 className="font-serif text-display-md text-pr-white leading-tight text-left">
+            Building Trust.<br />Creating Homes.<br />
+            <em className="not-italic text-pr-gold">Delivering Value.</em>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left — Stats */}
           <div
             className={`grid grid-cols-2 gap-6 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
@@ -45,17 +56,19 @@ export default function AboutDeveloper() {
           <div
             className={`transition-all duration-1000 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <SectionLabel>About Kishor Developers</SectionLabel>
-            <h2 id="about-heading" className="font-serif text-display-md text-pr-white leading-tight mb-6">
-              Building Trust.<br />Creating Homes.<br />
-              <em className="not-italic text-pr-gold">Delivering Value.</em>
-            </h2>
-            <p className="font-sans text-sm text-pr-grey leading-loose mb-6 max-w-md">
+            <div className="hidden lg:block">
+              <SectionLabel>About Kishor Developers</SectionLabel>
+              <h2 id="about-heading" className="font-serif text-display-md text-pr-white leading-tight mb-6 mt-2 lg:mt-0">
+                Building Trust.<br />Creating Homes.<br />
+                <em className="not-italic text-pr-gold">Delivering Value.</em>
+              </h2>
+            </div>
+            <p className="font-sans text-sm text-pr-grey leading-loose mb-6 max-w-md text-justify lg:mt-0 mt-4">
               For over two decades, Kishor Developers has been crafting homes that go beyond
               construction, homes that become the foundation of cherished memories, lasting
               relationships, and generational value.
             </p>
-            <p className="font-sans text-sm text-pr-grey leading-loose max-w-md">
+            <p className="font-sans text-sm text-pr-grey leading-loose max-w-md text-justify">
               With 1000+ properties delivered across Pune, our commitment to quality construction,
               timely delivery, and customer-first philosophy has earned the trust of thousands of
               families who call our projects home.

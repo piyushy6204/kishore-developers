@@ -14,7 +14,7 @@ export default function ProjectOverview() {
       <section id="overview" className="section-padding bg-pr-off-white" aria-labelledby="overview-heading">
         <div className="container-pr">
           {/* Mobile-only Header */}
-          <div className="block lg:hidden mb-8 text-center" ref={ref}>
+          <div className="block lg:hidden mb-8 text-center">
             <p className="font-sans text-lg md:text-xl uppercase tracking-[0.25em] text-pr-gold font-bold mb-4 drop-shadow-sm">
               Discover Platinum Royale
             </p>
@@ -23,7 +23,7 @@ export default function ProjectOverview() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center" ref={ref}>
             {/* Image side */}
             <div
               className={`relative transition-all duration-1000 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
@@ -81,7 +81,7 @@ export default function ProjectOverview() {
                   id="overview-brochure"
                   href="/brochure/platinum-royale-brochure.pdf"
                   download="Platinum-Royale-Brochure.pdf"
-                  className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-7 py-3.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+                  className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-7 py-3.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
                 >
                   Download Brochure
                 </a>

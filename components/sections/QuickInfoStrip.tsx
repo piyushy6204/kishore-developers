@@ -20,7 +20,7 @@ export default function QuickInfoStrip() {
                 <p className="font-sans text-[9px] uppercase tracking-[0.2em] text-pr-muted mb-1">
                   {item.label}
                 </p>
-                <p className="font-serif text-base text-pr-charcoal leading-tight">
+                <p className="font-sans font-medium text-lg text-pr-charcoal leading-tight">
                   {item.value}
                 </p>
               </div>

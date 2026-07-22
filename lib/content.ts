@@ -144,7 +144,7 @@ export const SPECIFICATIONS = [
 ];
 
 export const ABOUT_STATS = [
-  { value: 20, suffix: "+", label: "Years of Experience" },
+  { value: 25, suffix: "+", label: "Years of Experience" },
   { value: 1000, suffix: "+", label: "Properties Delivered" },
   { value: 100, suffix: "%", label: "Customer First" },
   { value: 0, suffix: " Delay", label: "Timely Delivery" },

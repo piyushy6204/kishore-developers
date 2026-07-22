@@ -69,7 +69,7 @@ export default function Gallery() {
           <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={() => setModalOpen(true)}
-              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
             >
               Book a Site Visit
             </button>
@@ -77,7 +77,7 @@ export default function Gallery() {
               id="gallery-brochure"
               href="/brochure/platinum-royale-brochure.pdf"
               download="Platinum-Royale-Brochure.pdf"
-              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-transparent text-pr-gold border border-pr-gold hover:bg-pr-gold hover:text-white"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-transparent text-pr-gold border border-pr-gold hover:bg-pr-gold hover:text-white"
             >
               Download Brochure
             </a>

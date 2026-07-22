@@ -64,7 +64,7 @@ export default function AboutDeveloper() {
               </h2>
             </div>
             <p className="font-sans text-sm text-pr-grey leading-loose mb-6 max-w-md text-justify lg:mt-0 mt-4">
-              For over two decades, Kishor Developers has been crafting homes that go beyond
+              For over 25 years, Kishor Developers has been crafting homes that go beyond
               construction, homes that become the foundation of cherished memories, lasting
               relationships, and generational value.
             </p>
@@ -76,7 +76,7 @@ export default function AboutDeveloper() {
 
             {/* Philosophy pills */}
             <div className="flex flex-wrap gap-2 mt-8">
-              {["Quality Construction", "Timely Delivery", "Customer First", "20+ Years Trust"].map((tag) => (
+              {["Quality Construction", "Timely Delivery", "Customer First", "25+ Years Trust"].map((tag) => (
                 <span
                   key={tag}
                   className="font-sans text-[10px] uppercase tracking-widest border border-pr-gold-40 text-pr-gold rounded-full px-4 py-1.5"

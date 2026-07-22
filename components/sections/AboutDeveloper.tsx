@@ -13,7 +13,7 @@ export default function AboutDeveloper() {
     <section id="about" className="section-padding bg-pr-charcoal text-pr-white overflow-hidden" aria-labelledby="about-heading">
       <div className="container-pr">
         {/* Mobile-only Header */}
-        <div className="block lg:hidden text-center mb-10" ref={ref}>
+        <div className="block lg:hidden text-center mb-10">
           <p className="font-sans text-lg md:text-xl uppercase tracking-[0.25em] text-pr-gold font-bold mb-4 drop-shadow-sm">
             About Kishor Developers
           </p>
@@ -23,7 +23,7 @@ export default function AboutDeveloper() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" ref={ref}>
           {/* Left — Stats */}
           <div
             className={`grid grid-cols-2 gap-6 transition-all duration-1000 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}

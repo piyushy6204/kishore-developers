@@ -109,23 +109,10 @@ export default function LeadForm() {
                     {errors.phone && <p className="text-red-500 text-xs mt-1 font-sans">{errors.phone}</p>}
                   </div>
 
-                  {/* Config */}
-                  <div>
-                    <label htmlFor="contact-config" className="block font-sans text-[10px] uppercase tracking-widest text-pr-muted mb-2">
-                      Preferred Configuration
-                    </label>
-                    <select
-                      id="contact-config"
-                      value={form.config}
-                      onChange={(e) => setForm({ ...form, config: e.target.value })}
-                      className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal focus:outline-none focus:ring-1 focus:ring-pr-gold transition appearance-none"
-                    >
-                      <option value="">Select configuration</option>
-                      <option value="654-sqft">Premium 2 BHK – 654 Sq.Ft. (Series 101-1101)</option>
-                      <option value="637-sqft">Premium 2 BHK – 637 Sq.Ft. (Series 102-1102)</option>
-                      <option value="632-sqft">Premium 2 BHK – 632 Sq.Ft. (Series 103-1103)</option>
-                      <option value="645-sqft">Premium 2 BHK – 645 Sq.Ft. (Series 104-1104)</option>
-                    </select>
+                  {/* Static configuration badge */}
+                  <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between mb-4">
+                    <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
+                    <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
                   </div>
 
                   <Button id="contact-submit" type="submit" variant="gold" size="lg" className="w-full">

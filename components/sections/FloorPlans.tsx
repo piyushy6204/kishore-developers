@@ -78,7 +78,7 @@ export default function FloorPlans() {
           {/* Type selector tabs */}
           <div 
             ref={tabsContainerRef}
-            className="flex items-center md:justify-center gap-2 mb-10 overflow-x-auto whitespace-nowrap snap-x snap-mandatory scrollbar-hide pb-2 px-4 -mx-4 md:px-0 md:mx-0"
+            className="relative flex items-center md:justify-center gap-2 mb-10 overflow-x-auto whitespace-nowrap snap-x snap-mandatory scrollbar-hide pb-2 px-4 -mx-4 md:px-0 md:mx-0"
           >
             {FLOOR_PLANS.map((fp, i) => (
               <button
@@ -103,7 +103,7 @@ export default function FloorPlans() {
               // @ts-ignore
               scrollContainerRef.current = node;
             }}
-            className={`flex md:block gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:-mx-0 md:px-0 md:max-w-3xl md:mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`relative flex md:block gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4 md:-mx-0 md:px-0 md:max-w-3xl md:mx-auto transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             {FLOOR_PLANS.map((plan, idx) => (
               <div

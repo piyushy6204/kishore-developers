@@ -25,11 +25,12 @@ export default function LocationAdvantages() {
       <section id="location" className="section-padding bg-pr-white" aria-labelledby="location-heading">
         <div className="container-pr">
           {/* Header */}
-          <div className="mb-12">
-            <SectionLabel>Location</SectionLabel>
+          <div className="text-center mb-14">
+            <SectionLabel align="center" className="mb-4 justify-center">Location</SectionLabel>
             <h2 id="location-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
               Connected To<br /><em className="not-italic text-pr-gold">Everything That Matters</em>
             </h2>
+            <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12" ref={ref}>
@@ -79,11 +80,18 @@ export default function LocationAdvantages() {
                 );
               })}
 
-              {/* CTA */}
-              <Button id="location-visit" variant="gold" size="md" onClick={() => setModalOpen(true)}>
-                Book Site Visit
-              </Button>
+
             </div>
+          </div>
+
+          {/* CTA Centered at Bottom */}
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+            >
+              Book a Site Visit
+            </button>
           </div>
         </div>
       </section>

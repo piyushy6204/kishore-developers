@@ -34,7 +34,7 @@ export default function LeadForm() {
       <div className="container-pr">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left — Benefits */}
-          <div>
+          <div className="hidden lg:block">
             <SectionLabel>Book Your Visit</SectionLabel>
             <h2 id="contact-heading" className="font-serif text-display-md text-pr-charcoal leading-tight mb-6">
               Discover Your<br />Future Home At<br />
@@ -68,11 +68,11 @@ export default function LeadForm() {
           {/* Right — Form card */}
           <div className="bg-pr-white rounded-3xl border border-pr-beige shadow-luxury-lg p-8 md:p-10">
             {/* Gold top border */}
-            <div className="h-0.5 w-12 bg-pr-gold rounded-full mb-6" />
+            <div className="h-0.5 w-12 bg-pr-gold rounded-full mb-6 mx-auto" />
 
             {!submitted ? (
               <>
-                <h3 className="font-serif text-2xl text-pr-charcoal mb-7 leading-tight">
+                <h3 className="font-serif text-2xl text-pr-charcoal mb-7 leading-tight text-center">
                   Schedule Your<br />Site Visit
                 </h3>
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>

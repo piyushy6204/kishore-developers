@@ -1,23 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
+import { useInView } from "framer-motion";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { SAMPLE_FLAT_IMAGES } from "@/lib/content";
 import { X, ZoomIn } from "lucide-react";
+import LeadModal from "@/components/ui/LeadModal";
 
 export default function SampleFlat() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { threshold: 0.1 });
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
-      <section id="sample-flat" className="section-padding bg-pr-white" aria-labelledby="sample-flat-heading">
+      <section ref={ref} id="sample-flat" className="section-padding bg-pr-white" aria-labelledby="sample-flat-heading">
         <div className="container-pr">
           {/* Header */}
-          <div className="mb-10">
-            <SectionLabel>Demo Flat</SectionLabel>
+          <div className="text-center mb-14">
+            <SectionLabel align="center" className="mb-4 justify-center text-lg md:text-xl">Demo Flat</SectionLabel>
             <h2 id="sample-flat-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
               Our Demo Flat
             </h2>
+            <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
           </div>
 
           {/* Horizontal Swipe Slider */}
@@ -45,6 +51,16 @@ export default function SampleFlat() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12">
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+            >
+              Book a Site Visit
+            </button>
           </div>
         </div>
       </section>
@@ -76,6 +92,9 @@ export default function SampleFlat() {
           </p>
         </div>
       )}
+
+      {/* Modal */}
+      {modalOpen && <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />}
     </>
   );
 }

@@ -26,10 +26,11 @@ export default function Specifications() {
       <div className="container-pr">
         {/* Header */}
         <div className="text-center mb-14">
-          <SectionLabel align="center">Specifications</SectionLabel>
+          <SectionLabel align="center" className="mb-4 justify-center">Specifications</SectionLabel>
           <h2 id="specs-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
             Crafted With Quality<br /><em className="not-italic text-pr-gold">In Every Detail</em>
           </h2>
+          <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
         </div>
 
         {/* Infinite Marquee Cards */}
@@ -64,7 +65,7 @@ export default function Specifications() {
         <div className="text-center mt-12">
           <button
             onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-pr-gold hover:text-pr-gold-dark transition-colors border border-pr-gold/30 hover:border-pr-gold rounded-full px-6 py-2.5"
+            className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest bg-pr-gold text-white hover:bg-pr-gold-dark transition-colors border border-pr-gold hover:border-pr-gold-dark rounded-full px-6 py-2.5"
           >
             View All Specifications
           </button>

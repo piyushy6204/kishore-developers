@@ -4,10 +4,12 @@ import Image from "next/image";
 import SectionLabel from "@/components/ui/SectionLabel";
 import { GALLERY_CATEGORIES, GALLERY_IMAGES } from "@/lib/content";
 import { X } from "lucide-react";
+import LeadModal from "@/components/ui/LeadModal";
 
 export default function Gallery() {
   const [active, setActive] = useState("All");
   const [lightbox, setLightbox] = useState<string | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const filtered =
     active === "All" ? GALLERY_IMAGES : GALLERY_IMAGES.filter((img) => img.category === active);
@@ -17,11 +19,12 @@ export default function Gallery() {
       <section id="gallery" className="section-padding bg-pr-off-white" aria-labelledby="gallery-heading">
         <div className="container-pr">
           {/* Header */}
-          <div className="mb-10">
-            <SectionLabel>Gallery</SectionLabel>
+          <div className="text-center mb-14">
+            <SectionLabel align="center" className="mb-4 justify-center">Gallery</SectionLabel>
             <h2 id="gallery-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
               Experience<br /><em className="not-italic text-pr-gold">Platinum Royale</em>
             </h2>
+            <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
           </div>
 
           {/* Category filter */}
@@ -63,12 +66,18 @@ export default function Gallery() {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={() => setModalOpen(true)}
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+            >
+              Book a Site Visit
+            </button>
             <a
               id="gallery-brochure"
               href="/brochure/platinum-royale-brochure.pdf"
               download="Platinum-Royale-Brochure.pdf"
-              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+              className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-10 py-4 text-sm tracking-widest bg-transparent text-pr-gold border border-pr-gold hover:bg-pr-gold hover:text-white"
             >
               Download Brochure
             </a>
@@ -100,6 +109,9 @@ export default function Gallery() {
           </div>
         </div>
       )}
+
+      {/* Modal */}
+      {modalOpen && <LeadModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />}
     </>
   );
 }

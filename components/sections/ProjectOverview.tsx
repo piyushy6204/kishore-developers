@@ -13,7 +13,17 @@ export default function ProjectOverview() {
     <>
       <section id="overview" className="section-padding bg-pr-off-white" aria-labelledby="overview-heading">
         <div className="container-pr">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center" ref={ref}>
+          {/* Mobile-only Header */}
+          <div className="block lg:hidden mb-8 text-center" ref={ref}>
+            <p className="font-sans text-lg md:text-xl uppercase tracking-[0.25em] text-pr-gold font-bold mb-4 drop-shadow-sm">
+              Discover Platinum Royale
+            </p>
+            <h2 className="font-serif text-display-md text-pr-charcoal leading-tight text-left">
+              A Home That<br />Celebrates Modern<br /><em className="text-pr-gold not-italic">Living</em>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image side */}
             <div
               className={`relative transition-all duration-1000 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
@@ -38,10 +48,14 @@ export default function ProjectOverview() {
             <div
               className={`transition-all duration-1000 delay-200 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
             >
-              <SectionLabel>Discover Platinum Royale</SectionLabel>
-              <h2 id="overview-heading" className="font-serif text-display-md text-pr-charcoal mb-6 leading-tight">
-                A Home That<br />Celebrates Modern<br /><em className="text-pr-gold not-italic">Living</em>
-              </h2>
+              {/* Desktop Header */}
+              <div className="hidden lg:block">
+                <SectionLabel>Discover Platinum Royale</SectionLabel>
+                <h2 id="overview-heading" className="font-serif text-display-md text-pr-charcoal mb-6 leading-tight">
+                  A Home That<br />Celebrates Modern<br /><em className="text-pr-gold not-italic">Living</em>
+                </h2>
+              </div>
+
               <p className="font-sans text-sm text-pr-muted leading-loose mb-10 max-w-md">
                 More than just a residence, Platinum Royale is a thoughtfully curated lifestyle destination.
                 Designed with elegant architecture, intelligent planning, and premium finishes,
@@ -62,14 +76,16 @@ export default function ProjectOverview() {
                 ))}
               </div>
 
-              <a
-                id="overview-brochure"
-                href="/brochure/platinum-royale-brochure.pdf"
-                download="Platinum-Royale-Brochure.pdf"
-                className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-7 py-3.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
-              >
-                Download Brochure
-              </a>
+              <div className="text-center lg:text-left mt-2">
+                <a
+                  id="overview-brochure"
+                  href="/brochure/platinum-royale-brochure.pdf"
+                  download="Platinum-Royale-Brochure.pdf"
+                  className="inline-flex items-center justify-center gap-2 rounded-full font-sans font-medium uppercase transition-all duration-300 cursor-pointer whitespace-nowrap px-7 py-3.5 text-xs tracking-widest bg-pr-gold text-white border border-pr-gold hover:bg-pr-gold-dark hover:border-pr-gold-dark"
+                >
+                  Download Brochure
+                </a>
+              </div>
             </div>
           </div>
         </div>

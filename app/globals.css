@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Inter", "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-outfit), sans-serif;
+  --font-sans: var(--font-outfit), sans-serif;
 
   /* Platinum Royale Color Palette */
   --color-pr-white: #FAFAF8;
-  --color-pr-off-white: #F3F0EB;
+  --color-pr-off-white: #EDE6DA; /* Slightly darker to contrast with white */
   --color-pr-gold: #B8976A;
   --color-pr-gold-light: #D4B896;
   --color-pr-gold-dark: #9A7A52;
-  --color-pr-beige: #E8DFD0;
+  --color-pr-beige: #D9CBB6; /* Darker beige to contrast with off-white */
   --color-pr-taupe: #9E8E7E;
   --color-pr-grey: #C8BDB2;
   --color-pr-walnut: #6B4F3A;
@@ -33,8 +33,8 @@
   /* Font sizes — clamp-based fluid type */
   --font-size-display-xl: clamp(3rem, 8vw, 7rem);
   --font-size-display-lg: clamp(2.5rem, 6vw, 5.5rem);
-  --font-size-display-md: clamp(2rem, 4vw, 3.5rem);
-  --font-size-display-sm: clamp(1.5rem, 3vw, 2.5rem);
+  --font-size-display-md: clamp(2.5rem, 6vw, 4rem);
+  --font-size-display-sm: clamp(2rem, 4vw, 3rem);
 }
 
 /* ─── Base Reset ──────────────────────────────── */
@@ -51,7 +51,7 @@ html {
 body {
   background-color: var(--color-pr-white);
   color: var(--color-pr-charcoal);
-  font-family: var(--font-inter, "Inter"), "Helvetica Neue", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
 }
 

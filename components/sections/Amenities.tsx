@@ -30,6 +30,15 @@ export default function Amenities() {
   return (
     <>
       <section id="amenities" className="section-padding bg-pr-off-white" aria-labelledby="amenities-heading">
+        <div className="container-pr">
+          <div className="text-center mb-14">
+            <SectionLabel align="center" className="mb-4 justify-center">Amenities</SectionLabel>
+            <h2 id="amenities-heading" className="font-serif text-display-md text-pr-charcoal leading-tight">
+              World-Class<br /><em className="not-italic text-pr-gold">Leisure & Lifestyle</em>
+            </h2>
+            <div className="h-0.5 w-16 bg-pr-gold mx-auto mt-6" />
+          </div>
+        </div>
         {/* Hero amenity image */}
         <div className="relative h-64 md:h-80 mb-16 overflow-hidden mx-4 md:mx-8 rounded-3xl shadow-luxury-lg img-reveal">
           <Image
@@ -83,7 +92,7 @@ export default function Amenities() {
           <div className="text-center mt-4">
             <button
               onClick={() => setAmenitiesModalOpen(true)}
-              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-pr-gold hover:text-pr-gold-dark transition-colors border border-pr-gold/30 hover:border-pr-gold rounded-full px-6 py-2.5"
+              className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest bg-pr-gold text-white hover:bg-pr-gold-dark transition-colors border border-pr-gold hover:border-pr-gold-dark rounded-full px-6 py-2.5"
             >
               View All Amenities
             </button>

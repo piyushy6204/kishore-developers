@@ -14,17 +14,20 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Platinum Royale — Premium 2 BHK Residences in Wakad, Pune | Kishor Developers",
+  title: "Platinum Royale Premium 2 BHK Residences in Wakad, Pune | Kishor Developers",
   description:
     "Discover Platinum Royale by Kishor Developers — exclusive premium 2 BHK residences in Wakad, Pune. Starting from ₹95 Lakhs. MAHA RERA: P52100031950. Schedule your site visit today.",
   keywords: ["Platinum Royale", "Kishor Developers", "2 BHK Wakad Pune", "luxury apartments Wakad", "premium flats Pune"],
   openGraph: {
-    title: "Platinum Royale — Premium 2 BHK in Wakad, Pune",
+    title: "Platinum Royale Premium 2 BHK in Wakad, Pune",
     description: "Exclusive single-tower premium residences starting ₹95 Lakhs. Crafted for families who appreciate thoughtful design.",
     type: "website",
     locale: "en_IN",
   },
   robots: "index, follow",
+  appleWebApp: {
+    title: "Platinum Royale",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

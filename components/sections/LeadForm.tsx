@@ -128,7 +128,7 @@ export default function LeadForm() {
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               {/* Name */}
               <div>
-                <label htmlFor="contact-name" className="block font-sans text-[10px] uppercase tracking-widest text-pr-muted mb-2">
+                <label htmlFor="contact-name" className="block font-sans text-xs font-medium uppercase tracking-wider text-pr-muted mb-2">
                   Full Name *
                 </label>
                 <input
@@ -145,7 +145,7 @@ export default function LeadForm() {
 
               {/* Phone */}
               <div>
-                <label htmlFor="contact-phone" className="block font-sans text-[10px] uppercase tracking-widest text-pr-muted mb-2">
+                <label htmlFor="contact-phone" className="block font-sans text-xs font-medium uppercase tracking-wider text-pr-muted mb-2">
                   Mobile Number *
                 </label>
                 <input

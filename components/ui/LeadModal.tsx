@@ -129,7 +129,7 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
-              <label htmlFor="modal-name" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
+              <label htmlFor="modal-name" className="block text-sm font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
                 Full Name *
               </label>
               <input
@@ -144,7 +144,7 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
               />
             </div>
             <div>
-              <label htmlFor="modal-phone" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
+              <label htmlFor="modal-phone" className="block text-sm font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
                 Mobile Number *
               </label>
               <input

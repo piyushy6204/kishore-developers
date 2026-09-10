@@ -33,7 +33,7 @@ export default function Hero() {
         />
         {/* Background image — Mobile */}
         <Image
-          src="/hero_ff.png"
+          src="/hero_ff1.png"
           alt="Platinum Royale — Premium Residences Wakad Pune"
           fill
           className="block md:hidden object-cover object-center"

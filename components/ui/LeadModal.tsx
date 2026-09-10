@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -21,18 +22,58 @@ const TRIGGER_SUBTITLES: Record<string, string> = {
 };
 
 export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadModalProps) {
+  const router = useRouter();
   const [form, setForm] = useState({ name: "", phone: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [clientError, setClientError] = useState("");
+  const [serverError, setServerError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || form.phone.length < 10) {
-      setError("Please enter a valid name and 10-digit phone number.");
+    setClientError("");
+    setServerError("");
+
+    // Client-side validation
+    if (!form.name.trim()) {
+      setClientError("Please enter your full name.");
       return;
     }
-    setError("");
-    setSubmitted(true);
+    if (!/^[6-9]\d{9}$/.test(form.phone.trim())) {
+      setClientError("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          config: "Premium 2 BHK",
+        }),
+      });
+
+      const data: { success: boolean; message?: string } = await res.json();
+
+      if (data.success) {
+        // Redirect ONLY after backend confirms TeleCRM accepted the lead
+        router.push("/thank-you");
+      } else {
+        setServerError(
+          data.message ??
+            "We could not submit your enquiry right now. Please try again."
+        );
+        setSubmitting(false);
+      }
+    } catch {
+      setServerError(
+        "A network error occurred. Please check your connection and try again."
+      );
+      setSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -66,105 +107,86 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
             <X size={18} strokeWidth={1.5} />
           </button>
 
-          {!submitted ? (
-            <>
-              {/* Header */}
-              <p className="font-sans text-xs uppercase tracking-[0.2em] text-pr-gold mb-2">
-                Platinum Royale
-              </p>
-              <h2 className="font-serif text-display-sm text-pr-charcoal mb-2 leading-tight">
-                {TRIGGER_TITLES[trigger]}
-              </h2>
-              <p className="font-sans text-sm text-pr-muted mb-7 leading-relaxed">
-                {TRIGGER_SUBTITLES[trigger]}
-              </p>
+          {/* Header */}
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-pr-gold mb-2">
+            Platinum Royale
+          </p>
+          <h2 className="font-serif text-display-sm text-pr-charcoal mb-2 leading-tight">
+            {TRIGGER_TITLES[trigger]}
+          </h2>
+          <p className="font-sans text-sm text-pr-muted mb-7 leading-relaxed">
+            {TRIGGER_SUBTITLES[trigger]}
+          </p>
 
-              {/* Error */}
-              {error && (
-                <p className="text-red-500 text-xs mb-4 font-sans">{error}</p>
-              )}
-
-              {/* Form */}
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-                <div>
-                  <label htmlFor="modal-name" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
-                    Full Name *
-                  </label>
-                  <input
-                    id="modal-name"
-                    type="text"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    placeholder="Your name"
-                    className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="modal-phone" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
-                    Mobile Number *
-                  </label>
-                  <input
-                    id="modal-phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    placeholder="10-digit mobile number"
-                    maxLength={10}
-                    className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition"
-                    required
-                  />
-                </div>
-                {/* Static configuration badge */}
-                <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between">
-                  <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
-                  <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
-                </div>
-
-                <Button type="submit" variant="gold" size="lg" className="w-full mt-2">
-                  {trigger === "brochure" ? "Send Me the Brochure" : "Schedule My Visit"}
-                </Button>
-              </form>
-
-              {/* RERA trust */}
-              <p className="mt-5 text-center font-sans text-[10px] text-pr-muted tracking-wide">
-                🔒 MAHA RERA: P52100031950 · 100% Privacy Guaranteed
-              </p>
-            </>
-          ) : (
-            /* Success state */
-            <div className="text-center py-6">
-              <div className="w-14 h-14 rounded-full bg-pr-off-white flex items-center justify-center mx-auto mb-5">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#B8976A" strokeWidth="1.5">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-              </div>
-              <h3 className="font-serif text-2xl text-pr-charcoal mb-2">
-                {trigger === "brochure" ? "Brochure Sent!" : "Visit Confirmed!"}
-              </h3>
-              <p className="font-sans text-sm text-pr-muted leading-relaxed">
-                Thank you, {form.name}. Our team will contact you on{" "}
-                <span className="text-pr-charcoal font-medium">{form.phone}</span> shortly.
-              </p>
-              {trigger === "brochure" && (
-                <a
-                  href="/brochure/platinum-royale-brochure.pdf"
-                  download
-                  className="inline-flex items-center gap-2 mt-6 font-sans text-xs uppercase tracking-widest text-pr-gold underline underline-offset-4 hover:text-pr-gold-dark transition"
-                >
-                  Click here to download brochure
-                </a>
-              )}
-              <button
-                onClick={onClose}
-                className="mt-6 font-sans text-xs uppercase tracking-widest text-pr-muted hover:text-pr-charcoal transition-colors cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
+          {/* Errors */}
+          {(clientError || serverError) && (
+            <p role="alert" className="text-red-500 text-xs mb-4 font-sans">
+              {clientError || serverError}
+            </p>
           )}
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <div>
+              <label htmlFor="modal-name" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
+                Full Name *
+              </label>
+              <input
+                id="modal-name"
+                type="text"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                placeholder="Your name"
+                disabled={submitting}
+                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="modal-phone" className="block text-xs font-sans font-medium text-pr-muted uppercase tracking-wider mb-1.5">
+                Mobile Number *
+              </label>
+              <input
+                id="modal-phone"
+                type="tel"
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                placeholder="10-digit mobile number"
+                maxLength={10}
+                disabled={submitting}
+                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
+                required
+              />
+            </div>
+            {/* Static configuration badge */}
+            <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between">
+              <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
+              <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
+            </div>
+
+            <Button
+              type="submit"
+              variant="gold"
+              size="lg"
+              className="w-full mt-2"
+              disabled={submitting}
+            >
+              {submitting
+                ? "Submitting…"
+                : trigger === "brochure"
+                ? "Send Me the Brochure"
+                : "Schedule My Visit"}
+            </Button>
+          </form>
+
+          {/* RERA trust */}
+          <p className="mt-5 text-center font-sans text-[10px] text-pr-muted tracking-wide">
+            🔒 MAHA RERA: P52100031950 · 100% Privacy Guaranteed
+          </p>
         </div>
       </div>
     </div>
   );
 }
+
+

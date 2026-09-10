@@ -18,7 +18,7 @@ const TRIGGER_TITLES: Record<string, string> = {
 const TRIGGER_SUBTITLES: Record<string, string> = {
   brochure: "Share your details to receive the Platinum Royale project brochure.",
   visit: "Our team will connect with you to arrange a private site visit.",
-  exit: "Discover Platinum Royale — starting ₹95 Lakhs. Let us send you the details.",
+  exit: "Discover Platinum Royale — starting ₹90 Lakhs. Let us send you the details.",
 };
 
 export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadModalProps) {
@@ -53,6 +53,7 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
           name: form.name.trim(),
           phone: form.phone.trim(),
           config: "Premium 2 BHK",
+          interested_project: "Platinum Royale",
         }),
       });
 
@@ -138,7 +139,7 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Your name"
                 disabled={submitting}
-                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
+                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-charcoal/40 focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
                 required
               />
             </div>
@@ -154,13 +155,14 @@ export default function LeadModal({ isOpen, onClose, trigger = "visit" }: LeadMo
                 placeholder="10-digit mobile number"
                 maxLength={10}
                 disabled={submitting}
-                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
+                className="w-full bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-charcoal/40 focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60"
                 required
               />
             </div>
-            {/* Static configuration badge */}
+            {/* Configuration badge */}
             <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between">
               <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
+              <span className="font-sans text-xs text-pr-muted">|</span>
               <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
             </div>
 

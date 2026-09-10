@@ -29,6 +29,7 @@ interface EnquiryBody {
   name: string;
   phone: string;
   config?: string;
+  interested_project?: string;
 }
 
 // ─── POST handler ─────────────────────────────────────────────────────────────
@@ -49,7 +50,7 @@ export async function POST(req: NextRequest) {
   }
 
   // ── Explicit allowlist: only accept known fields ───────────────────────────
-  const { name, phone, config } = body;
+  const { name, phone, config, interested_project } = body;
 
   // ── Server-side validation ────────────────────────────────────────────────
   const errors: string[] = [];
@@ -94,6 +95,7 @@ export async function POST(req: NextRequest) {
     name: name!.trim(),
     phone: phone!.trim(),
     ...(config ? { config: config.trim() } : {}),
+    interested_project: (interested_project ?? "Platinum Royale").trim(),
   });
 
   if (result.success) {

@@ -46,6 +46,7 @@ export default function LeadForm() {
           name: form.name.trim(),
           phone: form.phone.trim(),
           config: form.config,
+          interested_project: "Platinum Royale",
         }),
       });
 
@@ -137,7 +138,7 @@ export default function LeadForm() {
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
                   placeholder="Your full name"
                   disabled={submitting}
-                  className={`w-full bg-pr-off-white border rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60 ${errors.name ? "border-red-300" : "border-pr-beige"}`}
+                  className={`w-full bg-pr-off-white border rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-charcoal/40 focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60 ${errors.name ? "border-red-300" : "border-pr-beige"}`}
                 />
                 {errors.name && <p className="text-red-500 text-xs mt-1 font-sans">{errors.name}</p>}
               </div>
@@ -155,14 +156,15 @@ export default function LeadForm() {
                   placeholder="10-digit mobile"
                   maxLength={10}
                   disabled={submitting}
-                  className={`w-full bg-pr-off-white border rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-grey focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60 ${errors.phone ? "border-red-300" : "border-pr-beige"}`}
+                  className={`w-full bg-pr-off-white border rounded-xl px-4 py-3 text-sm font-sans text-pr-charcoal placeholder:text-pr-charcoal/40 focus:outline-none focus:ring-1 focus:ring-pr-gold transition disabled:opacity-60 ${errors.phone ? "border-red-300" : "border-pr-beige"}`}
                 />
                 {errors.phone && <p className="text-red-500 text-xs mt-1 font-sans">{errors.phone}</p>}
               </div>
 
-              {/* Static configuration badge */}
+              {/* Configuration badge */}
               <div className="bg-pr-off-white border border-pr-beige rounded-xl px-4 py-3 flex items-center justify-between mb-4">
                 <span className="font-sans text-xs text-pr-muted uppercase tracking-wider">Configuration</span>
+                <span className="font-sans text-xs text-pr-muted">|</span>
                 <span className="font-sans text-sm font-medium text-pr-charcoal">Premium 2 BHK</span>
               </div>
 

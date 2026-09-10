@@ -20,6 +20,8 @@ export interface TeleCRMLeadPayload {
   phone: string;
   /** Optional configuration string, e.g. "Premium 2 BHK" */
   config?: string;
+  /** Project the lead is interested in, e.g. "Platinum Royale" */
+  interested_project?: string;
 }
 
 export interface TeleCRMResult {
@@ -115,6 +117,8 @@ export async function submitLeadToTeleCRM(
       // Only include config if it's non-empty and a recognised custom field exists
       // in the TeleCRM workspace. Comment out if the field doesn't exist there.
       ...(payload.config ? { property_type: payload.config } : {}),
+      // Project name field — verify API name in TeleCRM → Settings → Lead Fields
+      ...(payload.interested_project ? { interested_project: payload.interested_project } : {}),
     },
   };
 
@@ -169,18 +173,9 @@ export async function submitLeadToTeleCRM(
     }
 
     // ── Parse response ────────────────────────────────────────────────────────
-    let json: unknown;
+    let rawText = "";
     try {
-      const rawText = await response.text();
-      try {
-        json = JSON.parse(rawText);
-      } catch (parseErr) {
-        console.error("[TeleCRM] Failed to parse JSON response. Raw text:", rawText);
-        return {
-          success: false,
-          message: "We could not submit your enquiry right now. Please try again.",
-        };
-      }
+      rawText = await response.text();
     } catch {
       console.error("[TeleCRM] Failed to read response text.");
       return {
@@ -189,7 +184,22 @@ export async function submitLeadToTeleCRM(
       };
     }
 
-    // TeleCRM Async API success: { "status": "QUEUED" }
+    if (rawText.trim() === "OK") {
+      return { success: true };
+    }
+
+    let json: unknown;
+    try {
+      json = JSON.parse(rawText);
+    } catch (parseErr) {
+      console.error("[TeleCRM] Failed to parse JSON response. Raw text:", rawText);
+      return {
+        success: false,
+        message: "We could not submit your enquiry right now. Please try again.",
+      };
+    }
+
+    // TeleCRM Async API success: { "status": "QUEUED" } (Fallback if they change it back)
     if (
       typeof json === "object" &&
       json !== null &&

@@ -5,7 +5,7 @@ export const SITE = {
   developer: "Kishor Developers",
   tagline: "Find Your Place In Wakad's Most Elegant Address",
   subtagline: "Crafted for families who appreciate thoughtful design, exceptional quality, and a lifestyle that reflects their aspirations.",
-  startingPrice: "₹95 Lakhs*",
+  startingPrice: "₹90 Lakhs*",
   location: "Wakad, Pune",
   configuration: "Premium 2 BHK",
   rera: "P52100031950",
@@ -34,7 +34,7 @@ export const NAV_LINKS = [
 export const QUICK_INFO = [
   { label: "Location", value: "Wakad, Pune" },
   { label: "Configuration", value: "Premium 2 BHK" },
-  { label: "Starting Price", value: "₹95 Lakhs*" },
+  { label: "Starting Price", value: "₹90 Lakhs*" },
   { label: "RERA No.", value: "P52100031950" },
   { label: "Possession", value: "Nearing Completion" },
 ];
